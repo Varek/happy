@@ -26,6 +26,7 @@ gem 'devise'
 gem 'cancan'
 gem "embedly", "~> 1.5.6"
 gem 'acts-as-taggable-on'
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
