@@ -19,9 +19,8 @@ class User < ActiveRecord::Base
   def decrease_happiness(happies=10)
     self.update_attribute('happiness',[self.happiness.to_i - happies,0].max)
     if happiness < 25 && (last_happiness_reminder_at.nil? || last_happiness_reminder_at < 3.days.ago)
-      puts "User #{id} is unhappy"
       self.update_attribute('last_happiness_reminder_at', DateTime.now)
-      #send mail
+      HappyMailer.happiness_reminder(self).deliver
     end
   end
 end
