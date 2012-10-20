@@ -13,7 +13,7 @@ class Moment < ActiveRecord::Base
   has_one :photo, :through => :moments_thing, :source => :thing, :source_type => "Photo"
   has_one :video, :through => :moments_thing, :source => :thing, :source_type => "Video"
   has_one :text, :through => :moments_thing, :source => :thing, :source_type => "Text"
-
+  has_one :email, :through => :moments_thing, :source => :thing, :source_type => "Email"
 
 #private
   def reward_happy_moment
@@ -51,6 +51,10 @@ class Moment < ActiveRecord::Base
       thing.provider = provider
     end
     self.moments_thing = MomentsThing.new(:thing => thing) if thing.present?
+  end
+
+  def self.create_email_moment(user,mail)
+    Moment.new(:user => user, thing => Email.new(:subject => mail.subject, :content => mail.body.decoded))
   end
 
 end

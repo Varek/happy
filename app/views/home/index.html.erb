@@ -4,19 +4,23 @@
       <% if @moment.present? %>
         <%= render 'moments/photo' %>
       <% else %>
-
+        <%= image_tag 'rabbitandpiggy.png'%>
       <% end %>
     </div>
+    <p>This is your Happy meter!</p>
     <div class="progress progress-warning">
       <div class="bar" style="width: <%= current_user.happiness %>%;"></div>
     </div>
+      <%= link_to welcome_path, :class =>'btn btn-warning' do %>
+        <i class="icon-chevron-left icon-white"></i><%= "Back to beginning" %>
+      <% end%>
   </div>
 <% else %>
   <div class='start'>
     <h1>HAPPY</h1>
     <div class='links'>
-      <%= link_to 'Login',  new_user_session_path, :class => 'btn btn-large btn-warning btn-block'%>
-      <%= link_to 'Register',  new_user_registration_path, :class => 'btn btn-large btn-block'%>
+      <%= link_to 'Login',  new_user_session_path, :class => 'btn btn-warning btn-block'%>
+      <%= link_to 'Register',  new_user_registration_path, :class => 'btn btn-block'%>
     </div>
   </div>
 <% end%>

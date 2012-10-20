@@ -26,24 +26,21 @@
 
 <% if @moments.blank? %>
   <% if @tag.present? && @type.present?%>
-    <%= "You have no happy moments, for the tag '#{@tag}' and the type #{@type}. Add some. " %>
+    <%= "You have no happy moments, for the tag '#{@tag}' and the type #{@type}. Add some! " %>
   <% elsif @type.present? %>
-    <%= "You have no happy moments, for the type '#{@type}'. Add some. " %>
+    <%= "You have no happy moments, for the type '#{@type}'. Add some! " %>
   <% elsif @tag.present? %>
-    <%= "You have no happy moments, for the tag '#{@tag}'. Add some. " %>
+    <%= "You have no happy moments, for the tag '#{@tag}'. Add some! " %>
   <% else %>
-    <%= "You have no happy moments, yet. Add some." %>
+    <%= "You have no happy moments, yet. Add some!" %>
   <% end %>
 
 <% end %>
 
 <%= form_tag(moments_path, :method => :get, :class => "form-search") do%>
   <%= hidden_field_tag 'tag', @tag, :class => "input-medium search-query" %>
-  <%= select_tag 'type', options_for_select(['photo','video','text'], @type), :include_blank => 'Filter by moment type' %>
+  <%= select_tag 'type', options_for_select(['photo','video','text'], @type), :prompt => 'Filter by moment type  ' %>
   <%= button_tag :class => 'btn' do %>
     <i class="icon-play-circle"></i>
   <% end %>
 <% end %>
-
-
-<%= link_to 'New Moment', new_moment_path %>
