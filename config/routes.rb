@@ -1,6 +1,7 @@
 Happy::Application.routes.draw do
 
   resources :moments, :except => [:edit]
+  resources :incoming_mails, :only => [:create]
   #get 'moments/:tag', to: 'moments#index', as: :moments_tag
 
   root :to => 'home#index'

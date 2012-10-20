@@ -1,5 +1,5 @@
 <%= form_tag(moments_path, :method => :get, :class => "form-search") do%>
-  <%= text_field_tag 'tag', @tag, :class => "input-medium search-query" %>
+  <%= text_field_tag 'tag', @tag, :class => "input-medium search-query", :placeholder => 'Filter by tags' %>
   <%= button_tag :class => 'btn' do %>
     <i class="icon-search"></i>
   <% end %>
@@ -39,7 +39,7 @@
 
 <%= form_tag(moments_path, :method => :get, :class => "form-search") do%>
   <%= hidden_field_tag 'tag', @tag, :class => "input-medium search-query" %>
-  <%= select_tag 'type', options_for_select(['photo','video','text'], @type), :include_blank => true %>
+  <%= select_tag 'type', options_for_select(['photo','video','text'], @type), :include_blank => 'Filter by moment type' %>
   <%= button_tag :class => 'btn' do %>
     <i class="icon-play-circle"></i>
   <% end %>
