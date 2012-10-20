@@ -1,0 +1,17 @@
+<%= form_for(@moment, :class=>'form-inline') do |f| %>
+  <% if @moment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moment.errors.count, "error") %> prohibited this moment from being saved:</h2>
+
+      <ul>
+      <% @moment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="controls controls-row">
+    <%= f.text_area :content, :rows => 1, :class => 'span4' %>
+    <%= f.button '<i class="icon-chevron-right"></i>'.html_safe, :class => 'btn span1' %>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <div class="row">
+  <div class="span3"> -->
+  <div class='moment'>
+    <% if @moment.photo.present? %>
+      <%= render 'photo' %>
+    <% elsif @moment.video.present? %>
+      <%= render 'video' %>
+    <% elsif @moment.text.present? %>
+      <%= render 'text'%>
+    <% elsif @moment.url.blank? && @moment.content.present? %>
+      <%= moment.content %>
+    <% end %>
+  </div>
+<!--   </div>
+</div> -->
+<%= form_for(@moment, :class=>'form-inline') do |f| %>
+    <%= f.text_field :tag_list, :placeholder => 'Tags (separated by commas)' %>
+    <%= f.submit 'Add Tags', :class => 'btn' %>
+<% end %>
+<%= link_to 'Back', moments_path %>

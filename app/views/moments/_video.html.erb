@@ -1,0 +1,3 @@
+<% video ||= @moment.video%>
+  <%#= image_tag video.thumb_url, :title => video.title%>
+  <%= video.embed_code.html_safe %>

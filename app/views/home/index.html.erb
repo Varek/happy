@@ -1,2 +1,16 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% if logged_in? %>
+  <div class='home'>
+    <div class='moment' style='opacity:<%= current_user.happiness.to_f/100%>'>
+      <%= render 'moments/photo' %>
+    </div>
+    <div class="progress progress-warning">
+      <div class="bar" style="width: <%= current_user.happiness %>%;"></div>
+    </div>
+  </div>
+<% else %>
+  <div class='start'>
+    <h1>HAPPY</h1>
+    <%= link_to 'Login',  new_user_session_path, :class => 'btn btn-large btn-warning btn-block'%>
+    <%= link_to 'Register',  new_user_registration_path, :class => 'btn btn-large btn-block'%>
+  </div>
+<% end%>

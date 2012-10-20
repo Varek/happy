@@ -1,7 +1,18 @@
 Happy::Application.routes.draw do
-  devise_for :users
 
-  get "home/index"
+  resources :moments, :except => [:edit]
+  #get 'moments/:tag', to: 'moments#index', as: :moments_tag
+
+  root :to => 'home#index'
+
+  get '/welcome' => 'home#welcome', :as => 'welcome'
+
+  devise_for :users, :skip => [:sessions], :controllers => { :registrations => "registrations" }
+  as :user do
+    get 'sign_in' => 'devise/sessions#new', :as => :new_user_session
+    post 'sign_in' => 'devise/sessions#create', :as => :user_session
+    delete 'sign_out' => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -49,12 +60,6 @@ Happy::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  root :to => 'home#index'
-
-  # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.

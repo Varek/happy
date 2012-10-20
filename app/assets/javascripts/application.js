@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.fitvids.js
 //= require twitter/bootstrap
 //= require_tree .
