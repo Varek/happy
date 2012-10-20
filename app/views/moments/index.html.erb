@@ -13,6 +13,8 @@
       <%= render 'video', :video => moment.video %>
     <% elsif moment.text.present? %>
       <%= render 'text', :text => moment.text %>
+    <% elsif moment.email.present? %>
+      <%= render 'email', :text => moment.email %>
     <% elsif moment.url.blank? && moment.content.present? %>
       <%= moment.content %>
     <% end %>
@@ -39,7 +41,7 @@
 
 <%= form_tag(moments_path, :method => :get, :class => "form-search") do%>
   <%= hidden_field_tag 'tag', @tag, :class => "input-medium search-query" %>
-  <%= select_tag 'type', options_for_select(['photo','video','text'], @type), :prompt => 'Filter by moment type  ' %>
+  <%= select_tag 'type', options_for_select(['photo','video','text', 'email'], @type), :prompt => 'Filter by moment type  ' %>
   <%= button_tag :class => 'btn' do %>
     <i class="icon-play-circle"></i>
   <% end %>

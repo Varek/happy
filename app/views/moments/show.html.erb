@@ -9,6 +9,8 @@
       <%= render 'video' %>
     <% elsif @moment.text.present? %>
       <%= render 'text'%>
+    <% elsif @moment.email.present? %>
+      <%= render 'email'%>
     <% elsif @moment.url.blank? && @moment.content.present? %>
       <%= moment.content %>
     <% end %>
