@@ -12,7 +12,7 @@
     <% elsif @moment.email.present? %>
       <%= render 'email'%>
     <% elsif @moment.url.blank? && @moment.content.present? %>
-      <%= moment.content %>
+      <%= @moment.content %>
     <% end %>
   </div>
 <!--   </div>

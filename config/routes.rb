@@ -7,6 +7,7 @@ Happy::Application.routes.draw do
   root :to => 'home#index'
 
   get '/welcome' => 'home#welcome', :as => 'welcome'
+  get '/challenges' => 'home#challenges', :as => 'challenges'
 
   devise_for :users, :skip => [:sessions], :controllers => { :registrations => "registrations" }
   as :user do
